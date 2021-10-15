@@ -1,0 +1,110 @@
+@startuml
+interface MultiplicationView {
+print()
+}
+
+abstract class MatrixMultiplicationView {
+bool isPretify
+MatrixTable matrixTable
+constructor()
+print()
+abstract printCell()
+}
+
+
+note right of MatrixMultiplicationView::print
+  loop matrixTable->getData() {
+     printCell()
+  }
+end note
+
+class ResultTextMatrix {
+printCell()
+}
+
+class ExpressionTextMatrix {
+printCell()
+}
+
+class MatrixCell {
+int base
+int multi
+}
+
+interface MatrixTable {
+getData() MatrixCell[][]
+setBaseFromTo()
+getBaseTo()
+getMultiTo()
+}
+
+class BaseMatrixTable {
+final int direction
+final int baseFrom
+final int baseTo
+final int multiStart
+final int multiTo
+final int limitColumn
+final int limitRow
+MatrixCell[][] data
+getData()
+setBaseFromTo()
+getBaseTo()
+getMultiTo()
+handleLimitColumn()
+handleLimitRow()
+generateStandardData()
+}
+
+note left of BaseMatrixTable::getData
+generateStandardData()
+handleLimitColumn()
+handleLimitRow()
+end note
+
+
+
+class MultiplicationApp {
+MultiplicationView multiplicationview
+printMultiplication()
+
+}
+
+note left of MultiplicationApp::printMultiplication
+multiplicationview.print()
+end note
+
+class Application {
+binding()
+}
+note right of Application::binding
+binding MultiplicationView interface
+to implementation class with predefined config
+end note
+class Config {
+{field} configs
+}
+
+class JsonMultiplicationView {
+constructor()
+print()
+}
+class HTMLMultiplicationView {
+constructor()
+print()
+}
+
+
+
+MultiplicationView <|--  MatrixMultiplicationView
+MatrixMultiplicationView <|-- ResultTextMatrix
+MatrixMultiplicationView <|-- ExpressionTextMatrix
+BaseMatrixTable <|--  MatrixTable
+MultiplicationView <|--  JsonMultiplicationView
+MultiplicationView <|--  HTMLMultiplicationView
+
+MatrixMultiplicationView -- MatrixTable
+MatrixTable -- MatrixCell
+MultiplicationApp -- MultiplicationView
+Application -- Config
+@enduml
