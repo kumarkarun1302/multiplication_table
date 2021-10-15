@@ -36,9 +36,6 @@ class BaseMatrixTable implements MatrixTable
     //@var array
     private $matrixData;
 
-    //@var int
-    private $rowNum;
-
 
     /**
      * BaseMatrixTable constructor.
@@ -92,7 +89,6 @@ class BaseMatrixTable implements MatrixTable
                 }
 
                 if (!isset($this->matrixData[$currentRow])) {
-                    $this->rowNum++;
                     $this->matrixData[$currentRow] = array();
                 }
                 $this->matrixData[$currentRow][] = new MatrixCell($base, $multi);
