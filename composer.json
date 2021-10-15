@@ -1,0 +1,24 @@
+{
+    "name": "vuvanly/multiplication",
+    "description": "This is a program display a view of multiplication table",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Van Ly Vu",
+            "email": "vanly.se05@gmail.com"
+        }
+    ],
+    "optimize-autoloader": true,
+    "require": {
+        "php-di/php-di": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        },
+        "files": ["Application.php", "App/Helper/functions.php"]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    }
+}
