@@ -1,5 +1,6 @@
 <?php
 
+namespace Unit\Implementation;
 
 use PHPUnit\Framework\TestCase;
 use \App\Implementation\ExpressionTextMatrix;
@@ -8,6 +9,7 @@ use \App\Common\MatrixCell;
 
 /**
  * Class ExpressionTextMatrixTest
+ * @package Unit\Implementation
  * @covers ExpressionTextMatrix
  */
 class ExpressionTextMatrixTest extends TestCase

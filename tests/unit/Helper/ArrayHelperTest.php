@@ -1,11 +1,13 @@
 <?php
 
+namespace Unit\Helper;
 
 use PHPUnit\Framework\TestCase;
 use \App\Helper\ArrayHelper;
 
 /**
  * Class ArrayHelperTest
+ * @package Unit\Helper
  * @covers ArrayHelper
  */
 class ArrayHelperTest extends TestCase

@@ -1,5 +1,6 @@
 <?php
 
+namespace Unit\Implementation;
 
 use App\Common\MatrixCell;
 use App\Contract\MatrixTable;
@@ -8,6 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Class ResultTextMatrixTest
+ * @package Unit\Implementation
  * @covers ResultTextMatrix
  */
 class ResultTextMatrixTest extends TestCase

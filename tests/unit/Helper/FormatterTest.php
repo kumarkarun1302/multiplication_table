@@ -1,10 +1,13 @@
 <?php
 
+namespace Unit\Helper;
+
 use \PHPUnit\Framework\TestCase;
 use \App\Helper\Formatter;
 
 /**
  * Class FormatterTest
+ * @package Unit\Helper
  * @covers Formatter
  */
 class FormatterTest extends TestCase

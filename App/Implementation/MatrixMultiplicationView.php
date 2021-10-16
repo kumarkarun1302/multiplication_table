@@ -11,6 +11,8 @@ use App\Helper\Formatter;
 
 abstract class MatrixMultiplicationView implements MultiplicationView
 {
+    use \App\Helper\StaticCalling;
+
     //@var MatrixTable
     protected $matrixTable;
 
@@ -31,7 +33,11 @@ abstract class MatrixMultiplicationView implements MultiplicationView
     }
 
     function printCell(MatrixCell $matrixCell): void {
-        echo Formatter::printFixedLength($this->getCellValue($matrixCell), $this->getMaxLengthCell());
+        echo $this->callStatic(
+            Formatter::class,
+            'printFixedLength',
+            $this->getCellValue($matrixCell),
+            $this->getMaxLengthCell());
     }
 
     abstract function getMaxLengthCell(): int;
