@@ -7,6 +7,7 @@ namespace App\Implementation;
 use App\Common\MatrixCell;
 use App\Contract\MatrixTable;
 use App\Contract\MultiplicationView;
+use App\Helper\Formatter;
 
 abstract class MatrixMultiplicationView implements MultiplicationView
 {
@@ -29,5 +30,11 @@ abstract class MatrixMultiplicationView implements MultiplicationView
         }
     }
 
-    abstract function printCell(MatrixCell $matrixCell): void;
+    function printCell(MatrixCell $matrixCell): void {
+        echo Formatter::printFixedLength($this->getCellValue($matrixCell), $this->getMaxLengthCell());
+    }
+
+    abstract function getMaxLengthCell(): int;
+
+    abstract function getCellValue(MatrixCell $matrixCell): string;
 }

@@ -9,12 +9,16 @@ use App\Helper\Formatter;
 
 class ExpressionTextMatrix extends MatrixMultiplicationView
 {
+    function getMaxLengthCell(): int {
+        return num_len($this->matrixTable->getBaseTo())
+            + num_len($this->matrixTable->getMultiTo())
+            + num_len($this->matrixTable->getBaseTo() * $this->matrixTable->getMultiTo())
+            + 6;
+    }
 
-    function printCell(MatrixCell $matrixCell): void
+    function getCellValue(MatrixCell $matrixCell): string
     {
-        $maxLengthCell = num_len($this->matrixTable->getBaseTo()) + num_len($this->matrixTable->getMultiTo()) + num_len($this->matrixTable->getBaseTo() * $this->matrixTable->getMultiTo()) + 6;
         $result = $matrixCell->base * $matrixCell->multi;
-        $cellValue = "{$matrixCell->base} * {$matrixCell->multi} = $result";
-        echo Formatter::printFixedLength($cellValue, $maxLengthCell);
+        return "{$matrixCell->base} * {$matrixCell->multi} = $result";
     }
 }

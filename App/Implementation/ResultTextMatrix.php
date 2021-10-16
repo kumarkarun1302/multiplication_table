@@ -7,10 +7,12 @@ use App\Helper\Formatter;
 
 class ResultTextMatrix extends MatrixMultiplicationView
 {
-    function printCell(MatrixCell $matrixCell): void {
-//        $maxLengthCell = num_len($this->matrixTable->getBaseTo()) * 2 + num_len($view->to * $view->to) + 6;
-        $maxLengthCell = num_len($this->matrixTable->getBaseTo() * $this->matrixTable->getMultiTo() );
-        $cellValue = $matrixCell->base * $matrixCell->multi;
-        echo Formatter::printFixedLength($cellValue, $maxLengthCell);
+    function getMaxLengthCell(): int {
+        return num_len($this->matrixTable->getBaseTo() * $this->matrixTable->getMultiTo() );
+    }
+
+    function getCellValue(MatrixCell $matrixCell): string
+    {
+        return (string) $matrixCell->base * $matrixCell->multi;
     }
 }
